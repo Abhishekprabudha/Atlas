@@ -1,25 +1,20 @@
-# Demonstration Architecture
+# Operations Platform Architecture
 
-## System responsibilities
+| Layer | Operational responsibility |
+| --- | --- |
+| LMS / CMS | Cargo master, milestones and terminal commands |
+| RoboOps WMS | Task orchestration, location control, exceptions and status confirmation |
+| WCS / PLC | Physical execution across ASRS, conveyors, TTV and UWS |
+| Control Tower | Cross-system dashboards, traceability, reporting and operational evidence |
 
-| Layer | Demonstrated responsibility |
-|---|---|
-| LMS / CMS | Booking/AWB context, shipment master, ULD/flight plan, customs/release status, transport commands and cargo milestones |
-| RoboOps WMS | Command validation, task generation, storage-media state, exact location, build-up/breakdown, exception handling and reporting |
-| WCS / PLC | Simulated ASRS, conveyor, TTV, UWS and ramp equipment execution |
-| EMMS / Maintenance | Machine health, faults, work orders, maintenance planning, availability and SLA evidence |
-| Control Tower | Cross-system dashboards, traceability, reporting and presenter evidence |
+## Operational state model
 
-## Demo state model
+The browser application maintains a coherent client-side terminal state derived from `data/seed-data.json`. Workflow execution updates cargo, task, event, equipment and integration-message records together, enabling each view to present the same operational position.
 
-All operational data is loaded from JSON at application start and cloned into browser memory. Scenario execution mutates:
+## Requirements traceability
 
-- shipment status and location;
-- WMS task state;
-- media state and utilization;
-- machine health and availability;
-- KPIs and exception counts;
-- integration messages and event stream;
-- requirement evidence coverage.
+`data/requirements.json` preserves the source workbook and adds a normalized requirement collection. Each requirement is mapped to one or more workflows and application modules.
 
-A reset returns the demo to the supplied baseline JSON.
+## Data reset
+
+A reset restores the supplied approved baseline JSON. In a deployed environment, this action should be restricted to authorized operational roles and backed by an auditable service endpoint.

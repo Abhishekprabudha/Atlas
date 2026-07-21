@@ -1,81 +1,43 @@
-# AIonOS × MAB Kargo — Project Atlas Interactive Demo
+# AIonOS × MAB Kargo — Project Atlas Operations Platform
 
-A static, GitHub Pages-ready application that blends the **Logistics/Cargo Management System (LMS/CMS)** with the **RoboOps Warehouse Management System (WMS)** and a simulated **WCS/PLC execution layer**.
+Project Atlas is an enterprise operations platform for the MAB Kargo terminal. It brings cargo workflows, warehouse execution, equipment health, integration monitoring, reporting and requirements traceability into one governed workspace.
 
-The application is designed for the MAB Kargo bid-defense demonstration and contains every requirement and scenario from the supplied **Project Atlas – MABkargo Technical Requirement Script** workbook.
+## Capabilities
 
-## What is included
-
-- Live cargo mission-control dashboard with terminal map, KPIs and event stream.
-- Five fully demonstrable Project Atlas scenarios:
-  1. Cargo Outbound Process
-  2. Cargo Inbound Process
-  3. Reporting Preparation
-  4. Maintenance Readiness
-  5. System Integration Planning
-- The seven cargo functions: Acceptance, Cargo Build-Up, ULD Storage, Outbound Ramp Retrieval, Inbound Ramp Check-In, Import Breakdown and Import Release.
-- All seven required report types with dynamic tables, filters, scheduling and CSV export.
-- Maintenance strategy, machine health, work planning, fault injection, recovery and the ≥98% availability calculation.
-- LMS → WMS → WCS command simulation, message acknowledgements, exceptions, retry and replay.
-- Searchable requirement traceability with the original workbook cells mirrored in the application.
-- Presenter runbook and full-screen bid-defense mode.
-- Synthetic JSON data that updates during scenario execution.
-- Offline cache / PWA support after the first load.
-
-## Deploy directly to GitHub Pages
-
-1. Create a new GitHub repository.
-2. Upload **all files and folders from this repository ZIP** to the repository root.
-3. Open **Settings → Pages**.
-4. Under **Build and deployment**, choose **Deploy from a branch**.
-5. Select the `main` branch and `/ (root)`, then save.
-6. Open the Pages URL after GitHub finishes deployment.
-
-No build command or backend is required.
+- Five operational workflows for outbound, inbound, reporting, maintenance and integration controls.
+- Live cargo terminal map with workflow-aware events, exceptions and equipment status.
+- WMS task orchestration, cargo worklists, inventory visibility and command processing.
+- Scheduled reporting, maintenance planning, incident recovery and SLA monitoring.
+- LMS → WMS → WCS message acknowledgement, retry and replay controls.
+- Requirement-to-workflow traceability against the supplied Project Atlas workbook.
+- Exportable operational data for audit and analysis.
 
 ## Run locally
 
-### Using Node.js
-
 ```bash
-npm run dev
+npm start
 ```
 
-Open `http://localhost:4173`.
+Then open <http://localhost:4173>.
 
-### Using Python
+## Operational workflow sequence
 
-```bash
-python3 -m http.server 4173
-```
+1. Review terminal health and current exceptions in **Cargo Mission Control**.
+2. Open **Atlas Workflow Center** and execute the outbound workflow.
+3. Review inbound handling, including PRP and TTS cold-room routing.
+4. Use **Reporting Center** to generate, schedule or export operational reports.
+5. Review **Maintenance & SLA** for equipment health, recovery status and availability.
+6. Monitor acknowledgement, retry and replay controls in **Integration Monitor**.
+7. Use **Atlas Traceability** to review requirements and workflow evidence.
 
-Open `http://localhost:4173`.
+## Project structure
 
-> Do not open `index.html` directly using `file://`; the browser will block local JSON loading. Use either GitHub Pages or an HTTP server.
+- `data/scenarios.json` — workflow steps for the five operational domains.
+- `data/requirements.json` — normalized requirements and workbook mirror.
+- `data/seed-data.json` — initial terminal records.
+- `assets/js/app.js` — client-side application, workflows and interactions.
+- `assets/css/app.css` — application styling.
 
-## Recommended live demonstration sequence
+## Deployment
 
-1. **Cargo Mission Control** — establish the operating model and live terminal state.
-2. **Atlas Demo Launcher** — run Scenario 1 Outbound at 2× speed.
-3. Inject an exception during the ramp movement, then demonstrate controlled resolution.
-4. Run Scenario 2 Inbound and highlight PRP and TTS cold-room routing.
-5. Open **Reporting Center** and generate/export each required report family.
-6. Open **Maintenance & SLA**, inject a TTV fault, recover it and explain the availability formula.
-7. Open **Integration Monitor**, simulate an API failure and replay the message without duplication.
-8. Open **Atlas Traceability** to show all workbook requirements and the evidence accumulated during the demo.
-9. Close in **Presenter Runbook** / full-screen presenter mode.
-
-## Data files
-
-- `data/requirements.json` — normalized scenarios and requirements plus the complete workbook mirror.
-- `data/atlas-workbook-raw.json` — raw cell values from all four workbook sheets.
-- `data/scenarios.json` — executable demonstration steps for all five scenarios.
-- `data/seed-data.json` — shipments, AWBs, ULDs, BINA/BOXA, machines, locations, events, reports and APIs.
-
-## Architecture
-
-The demo intentionally follows the operating statement used in the bid defense:
-
-**LMS commands. WMS decides and confirms. WCS executes.**
-
-The application is entirely front-end and uses synthetic data. It does not connect to production MAB Kargo systems.
+The app is static and can be served with GitHub Pages, a CDN, or any web server. `server.js` is included for local use.
