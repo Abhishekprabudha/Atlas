@@ -16,4 +16,4 @@ http.createServer((req,res)=>{
       res.end(data);
     });
   });
-}).listen(port,()=>console.log(`MAB Kargo Atlas demo running at http://localhost:${port}`));
+}).listen(port,()=>console.log(`MAB Kargo Atlas Operations running at http://localhost:${port}`));

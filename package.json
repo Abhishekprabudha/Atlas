@@ -1,8 +1,8 @@
 {
-  "name": "mab-kargo-atlas-demo",
+  "name": "mab-kargo-atlas-operations",
   "version": "1.0.0",
   "private": true,
-  "description": "AIonOS MAB Kargo Project Atlas interactive LMS/CMS/WMS demonstration",
+  "description": "AIonOS MAB Kargo Project Atlas enterprise LMS, CMS and WMS operations platform",
   "scripts": {
     "dev": "node server.js",
     "start": "node server.js"
