@@ -50,10 +50,10 @@ class AtlasApp {
   async init(){
     const [req, workflows, seed] = await Promise.all([
       fetch('data/requirements.json').then(r=>r.json()),
-      fetch('data/workflows.json').then(r=>r.json()),
+      fetch('data/scenarios.json').then(r=>r.json()),
       fetch('data/seed-data.json').then(r=>r.json())
     ]);
-    this.reqData=req; this.workflows=scenarios; this.seed=seed;
+    this.reqData=req; this.workflows=workflows; this.seed=seed;
     this.resetOperationalData(false);
     this.buildNav(); this.bindGlobal(); this.render();
     setInterval(()=>this.tickClock(),1000);
