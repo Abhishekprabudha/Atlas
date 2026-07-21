@@ -126,6 +126,7 @@ class AtlasApp {
   action(action, ds){
     const fn={
       selectScenario:()=>this.selectScenario(ds.id), startScenario:()=>this.startScenario(ds.id), runAll:()=>this.runAllScenarios(),
+      demoAction:()=>this.runDemoAction(ds.demo),
       pauseScenario:()=>this.pauseScenario(), nextStep:()=>this.nextStep(true), resetWorkflows:()=>this.resetWorkflows(),
       reportException:()=>this.reportException(ds.type||'destination'), openRequirement:()=>this.openRequirement(ds.id),
       jumpRequirement:()=>this.jumpRequirement(ds.id), selectReport:()=>{this.state.selectedReport=ds.id;this.render();},
@@ -242,6 +243,15 @@ class AtlasApp {
         ${this.kpi('Average cargo cycle',`${k.avgCycle} min`,'↓ 8% vs operating baseline')}
         ${this.kpi('LMS commands today',fmt(k.commandsToday),'99.96% acknowledged')}
       </section>
+      <section class="card demo-actions-card" style="margin-top:16px">
+        <div class="card-header"><div><div class="card-title">Client demo actions</div><div class="card-sub">Click any action to make Atlas perform a live, relevant operational response.</div></div><span class="badge info">20 interactive proofs</span></div>
+        <div class="demo-actions">${[
+          ['outbound','▶ Run outbound cargo'],['inbound','▶ Run inbound cargo'],['all','▶ Execute all workflows'],['task','＋ Create WMS task'],['complete','✓ Complete next task'],
+          ['report','▥ Generate performance report'],['schedule','◷ Schedule daily report'],['export','⇩ Export report CSV'],['fault','⚠ Simulate equipment fault'],['recover','↻ Recover equipment'],
+          ['incident','⇄ Simulate interface failure'],['replay','↻ Replay failed message'],['destination','⌁ Resolve occupied ramp'],['location','⌁ Re-slot unavailable location'],['weight','⚖ Flag weight mismatch'],
+          ['awb-out','◉ Inspect outbound AWB'],['awb-in','◉ Inspect inbound AWB'],['traceability','✓ Show requirement evidence'],['data','⌘ Explore live data'],['briefing','▤ Open client briefing']
+        ].map(([demo,label])=>`<button class="ghost-btn demo-action-btn" data-action="demoAction" data-demo="${demo}">${label}</button>`).join('')}</div>
+      </section>
       <section class="layout-main" style="margin-top:16px">
         <div class="card">
           <div class="card-header"><div><div class="card-title">Live Cargo Terminal Digital Map</div><div class="card-sub">LMS orchestrates · WMS decides and confirms · WCS executes</div></div><div class="card-actions"><span class="badge success">● Live</span><button class="ghost-btn" data-action="reportException" data-type="destination">Report exception</button></div></div>
@@ -259,6 +269,24 @@ class AtlasApp {
   }
 
   kpi(label,value,meta,kind=''){return `<div class="card kpi-card"><div class="kpi-label">${esc(label)}</div><div class="kpi-value">${esc(value)}</div><div class="kpi-meta ${kind}">${esc(meta)}</div></div>`;}
+
+  runDemoAction(demo){
+    const route=(name)=>this.navigate(name);
+    const start=(id,view)=>{route(view);this.startScenario(id);};
+    const nextTask=this.data.tasks.find(t=>t.state!=='Completed');
+    const failed=this.state.messageLog.find(m=>m.status==='ERROR');
+    const actions={
+      outbound:()=>start('S1','outbound'), inbound:()=>start('S2','inbound'), all:()=>{route('workflows');this.runAllScenarios();},
+      task:()=>{route('wms');this.createManualCommand();}, complete:()=>{route('wms');if(nextTask)this.completeTask(nextTask.id);else this.toast('No open tasks','All current WMS tasks are complete.');},
+      report:()=>{route('reports');this.generateReport();}, schedule:()=>{route('reports');this.scheduleReport();}, export:()=>{route('reports');this.exportReport();this.toast('Report exported','CSV download contains current operational data.');},
+      fault:()=>{route('maintenance');this.triggerFault();}, recover:()=>{route('maintenance');this.recoverMachine('TTV-01');},
+      incident:()=>{route('integration');this.registerInterfaceIncident();}, replay:()=>{route('integration');if(failed)this.replayMessage(failed.id);else {this.registerInterfaceIncident(false);this.replayMessage(this.state.messageLog[0].id);}},
+      destination:()=>{route('dashboard');this.reportException('destination');}, location:()=>{route('wms');this.reportException('location');}, weight:()=>{route('outbound');this.reportException('weight');},
+      'awb-out':()=>{route('outbound');this.showAwb('232-48392175');}, 'awb-in':()=>{route('inbound');this.showAwb('232-18945571');},
+      traceability:()=>{this.reqData.requirements.forEach(r=>this.state.coverage.add(r.id));route('requirements');this.toast('Requirement evidence ready','All mapped requirements now show captured evidence.');}, data:()=>route('data'), briefing:()=>this.openBriefing()
+    };
+    actions[demo]?.();
+  }
 
   terminalMap(){return `<div class="terminal-map">
     <div class="zone accept">Zone 01<strong>Acceptance</strong><small>RCS / FOH · BINA / BOXA</small></div>
