@@ -19,9 +19,61 @@
   },
   "shipments": [
     {
+      "awb": "AWB2607-S-011",
+      "flight": "MH0142",
+      "route": "KUL\u2013SYD",
+      "type": "GEN",
+      "pieces": 16,
+      "weight": 1240,
+      "direction": "Outbound",
+      "status": "Build-up",
+      "cutoff": "11:10",
+      "media": "PMC-2607-O-01",
+      "location": "BUP-02"
+    },
+    {
+      "awb": "AWB2607-S-012",
+      "flight": "MH0142",
+      "route": "KUL\u2013SYD",
+      "type": "PER",
+      "pieces": 8,
+      "weight": 610,
+      "direction": "Outbound",
+      "status": "Build-up",
+      "cutoff": "11:10",
+      "media": "PMC-2607-O-01",
+      "location": "BUP-02"
+    },
+    {
+      "awb": "AWB2607-S-013",
+      "flight": "MH0815",
+      "route": "SIN\u2013KUL",
+      "type": "GEN",
+      "pieces": 21,
+      "weight": 1485,
+      "direction": "Inbound",
+      "status": "Breakdown",
+      "cutoff": "\u2014",
+      "media": "AKE-2607-I-01",
+      "location": "BDN-01"
+    },
+    {
+      "awb": "AWB2607-S-014",
+      "flight": "MH0815",
+      "route": "SIN\u2013KUL",
+      "type": "TTS",
+      "pieces": 10,
+      "weight": 420,
+      "direction": "Inbound",
+      "status": "Cold Room",
+      "cutoff": "\u2014",
+      "media": "AKE-2607-I-01",
+      "location": "COLD-02"
+    },
+    {
       "awb": "232-48392175",
       "flight": "MH0066",
-      "route": "KUL–ICN",
+      "route": "KUL\u2013ICN",
       "type": "PER",
       "pieces": 18,
       "weight": 1286,
@@ -34,7 +86,7 @@
     {
       "awb": "232-57011842",
       "flight": "MH0072",
-      "route": "KUL–NRT",
+      "route": "KUL\u2013NRT",
       "type": "GEN",
       "pieces": 42,
       "weight": 2944,
@@ -47,33 +99,33 @@
     {
       "awb": "232-18945571",
       "flight": "MH0123",
-      "route": "BKK–KUL",
+      "route": "BKK\u2013KUL",
       "type": "TTS",
       "pieces": 12,
       "weight": 780,
       "direction": "Inbound",
       "status": "Cold Room",
-      "cutoff": "—",
+      "cutoff": "\u2014",
       "media": "AKE-44109",
       "location": "COLD-01"
     },
     {
       "awb": "232-88419220",
       "flight": "MH0037",
-      "route": "HKG–KUL",
+      "route": "HKG\u2013KUL",
       "type": "VAL",
       "pieces": 6,
       "weight": 220,
       "direction": "Inbound",
       "status": "Customs Hold",
-      "cutoff": "—",
+      "cutoff": "\u2014",
       "media": "BOXA-034",
       "location": "BOND-04"
     },
     {
       "awb": "232-76299011",
       "flight": "MH0366",
-      "route": "KUL–PVG",
+      "route": "KUL\u2013PVG",
       "type": "DGR",
       "pieces": 9,
       "weight": 560,
@@ -85,6 +137,22 @@
     }
   ],
   "media": [
+    {
+      "id": "PMC-2607-O-01",
+      "type": "ULD",
+      "status": "Full",
+      "location": "BUP-02",
+      "awb": "AWB2607-S-011, AWB2607-S-012",
+      "capacity": 79
+    },
+    {
+      "id": "AKE-2607-I-01",
+      "type": "ULD",
+      "status": "Full",
+      "location": "COLD-02",
+      "awb": "AWB2607-S-013, AWB2607-S-014",
+      "capacity": 68
+    },
     {
       "id": "BINA-0142",
       "type": "BINA",
@@ -98,7 +166,7 @@
       "type": "BINA",
       "status": "Empty",
       "location": "ASRS-A-014",
-      "awb": "—",
+      "awb": "\u2014",
       "capacity": 0
     },
     {
@@ -114,7 +182,7 @@
       "type": "BOXA",
       "status": "In-move",
       "location": "CV-07",
-      "awb": "—",
+      "awb": "\u2014",
       "capacity": 0
     },
     {
@@ -146,7 +214,7 @@
       "type": "IHCA",
       "status": "Empty",
       "location": "ASRS-B-032",
-      "awb": "—",
+      "awb": "\u2014",
       "capacity": 0
     }
   ],
@@ -273,19 +341,19 @@
       "time": "08:58:42",
       "type": "success",
       "title": "FOW milestone confirmed",
-      "detail": "PMC-92216 arrived RAMP-02 · MH0366"
+      "detail": "PMC-92216 arrived RAMP-02 \u00b7 MH0366"
     },
     {
       "time": "08:57:15",
       "type": "info",
       "title": "ULD final weight posted",
-      "detail": "AKE-58321 · 2,944 kg · UWS-01"
+      "detail": "AKE-58321 \u00b7 2,944 kg \u00b7 UWS-01"
     },
     {
       "time": "08:54:08",
       "type": "warn",
       "title": "Customs release pending",
-      "detail": "AWB 232-88419220 · 38 min on hold"
+      "detail": "AWB 232-88419220 \u00b7 38 min on hold"
     },
     {
       "time": "08:51:31",
@@ -297,7 +365,7 @@
       "time": "08:48:19",
       "type": "info",
       "title": "Empty BINA request accepted",
-      "detail": "2 × BINA · Output lane ACCEPT-01"
+      "detail": "2 \u00d7 BINA \u00b7 Output lane ACCEPT-01"
     }
   ],
   "apis": [
@@ -342,43 +410,43 @@
     {
       "id": "performance",
       "name": "System Performance Report",
-      "icon": "▥",
+      "icon": "\u25a5",
       "desc": "Throughput, cycle time, SLA and exception closure."
     },
     {
       "id": "availability",
       "name": "Machine Availability Report",
-      "icon": "◉",
+      "icon": "\u25c9",
       "desc": "Uptime, planned time, downtime and availability."
     },
     {
       "id": "faults",
       "name": "Machine Fault Analysis Report",
-      "icon": "⚠",
+      "icon": "\u26a0",
       "desc": "Fault frequency, duration, root cause and recurrence."
     },
     {
       "id": "health",
       "name": "Machine Health Report",
-      "icon": "♥",
+      "icon": "\u2665",
       "desc": "Condition scores, inspections and trend indicators."
     },
     {
       "id": "inventory",
       "name": "Inventory Report",
-      "icon": "▦",
+      "icon": "\u25a6",
       "desc": "AWB, media, location, aging and occupancy."
     },
     {
       "id": "utilization",
       "name": "System & Machine Utilization",
-      "icon": "⌁",
+      "icon": "\u2301",
       "desc": "Task load, machine use and idle capacity."
     },
     {
       "id": "optimization",
       "name": "Optimization Report",
-      "icon": "✦",
+      "icon": "\u2726",
       "desc": "Potential travel, labor and throughput improvements."
     }
   ]
