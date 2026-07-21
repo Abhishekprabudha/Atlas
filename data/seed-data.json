@@ -1,0 +1,385 @@
+{
+  "settings": {
+    "site": "KUL Cargo Terminal",
+    "company": "MAB Kargo",
+    "wms": "RoboOps WMS",
+    "lms": "LMS Host",
+    "timezone": "Asia/Kuala_Lumpur",
+    "availabilityTarget": 98
+  },
+  "kpis": {
+    "availability": 98.6,
+    "openExceptions": 3,
+    "avgCycle": 42,
+    "sla": 96,
+    "inventoryAccuracy": 99.3,
+    "commandsToday": 1284,
+    "tasksOpen": 17,
+    "onTimeFlights": 94
+  },
+  "shipments": [
+    {
+      "awb": "232-48392175",
+      "flight": "MH0066",
+      "route": "KUL–ICN",
+      "type": "PER",
+      "pieces": 18,
+      "weight": 1286,
+      "direction": "Outbound",
+      "status": "Accepted",
+      "cutoff": "10:20",
+      "media": "BINA-0142",
+      "location": "ACCEPT-02"
+    },
+    {
+      "awb": "232-57011842",
+      "flight": "MH0072",
+      "route": "KUL–NRT",
+      "type": "GEN",
+      "pieces": 42,
+      "weight": 2944,
+      "direction": "Outbound",
+      "status": "Build-up",
+      "cutoff": "10:45",
+      "media": "AKE-58321",
+      "location": "BUP-03"
+    },
+    {
+      "awb": "232-18945571",
+      "flight": "MH0123",
+      "route": "BKK–KUL",
+      "type": "TTS",
+      "pieces": 12,
+      "weight": 780,
+      "direction": "Inbound",
+      "status": "Cold Room",
+      "cutoff": "—",
+      "media": "AKE-44109",
+      "location": "COLD-01"
+    },
+    {
+      "awb": "232-88419220",
+      "flight": "MH0037",
+      "route": "HKG–KUL",
+      "type": "VAL",
+      "pieces": 6,
+      "weight": 220,
+      "direction": "Inbound",
+      "status": "Customs Hold",
+      "cutoff": "—",
+      "media": "BOXA-034",
+      "location": "BOND-04"
+    },
+    {
+      "awb": "232-76299011",
+      "flight": "MH0366",
+      "route": "KUL–PVG",
+      "type": "DGR",
+      "pieces": 9,
+      "weight": 560,
+      "direction": "Outbound",
+      "status": "Ramp Ready",
+      "cutoff": "09:55",
+      "media": "PMC-92216",
+      "location": "RAMP-02"
+    }
+  ],
+  "media": [
+    {
+      "id": "BINA-0142",
+      "type": "BINA",
+      "status": "Full",
+      "location": "ACCEPT-02",
+      "awb": "232-48392175",
+      "capacity": 72
+    },
+    {
+      "id": "BINA-0098",
+      "type": "BINA",
+      "status": "Empty",
+      "location": "ASRS-A-014",
+      "awb": "—",
+      "capacity": 0
+    },
+    {
+      "id": "BOXA-034",
+      "type": "BOXA",
+      "status": "Full",
+      "location": "BOND-04",
+      "awb": "232-88419220",
+      "capacity": 64
+    },
+    {
+      "id": "BOXA-071",
+      "type": "BOXA",
+      "status": "In-move",
+      "location": "CV-07",
+      "awb": "—",
+      "capacity": 0
+    },
+    {
+      "id": "AKE-58321",
+      "type": "ULD",
+      "status": "Full",
+      "location": "BUP-03",
+      "awb": "232-57011842",
+      "capacity": 88
+    },
+    {
+      "id": "AKE-44109",
+      "type": "ULD",
+      "status": "Full",
+      "location": "COLD-01",
+      "awb": "232-18945571",
+      "capacity": 54
+    },
+    {
+      "id": "PMC-92216",
+      "type": "ULD",
+      "status": "Full",
+      "location": "RAMP-02",
+      "awb": "232-76299011",
+      "capacity": 96
+    },
+    {
+      "id": "IHCA-221",
+      "type": "IHCA",
+      "status": "Empty",
+      "location": "ASRS-B-032",
+      "awb": "—",
+      "capacity": 0
+    }
+  ],
+  "machines": [
+    {
+      "id": "ASRS-CRN-01",
+      "name": "ASRS Crane 01",
+      "type": "ASRS Crane",
+      "status": "Running",
+      "health": 96,
+      "availability": 99.2,
+      "hours": 6821,
+      "nextService": "2026-07-27"
+    },
+    {
+      "id": "ASRS-CRN-02",
+      "name": "ASRS Crane 02",
+      "type": "ASRS Crane",
+      "status": "Running",
+      "health": 91,
+      "availability": 98.8,
+      "hours": 7112,
+      "nextService": "2026-07-25"
+    },
+    {
+      "id": "CV-RAMP-01",
+      "name": "Ramp Conveyor 01",
+      "type": "Conveyor",
+      "status": "Running",
+      "health": 93,
+      "availability": 99.4,
+      "hours": 4380,
+      "nextService": "2026-08-02"
+    },
+    {
+      "id": "TTV-01",
+      "name": "Transfer Vehicle 01",
+      "type": "TTV",
+      "status": "Running",
+      "health": 88,
+      "availability": 98.1,
+      "hours": 5290,
+      "nextService": "2026-07-23"
+    },
+    {
+      "id": "UWS-01",
+      "name": "ULD Weighing 01",
+      "type": "UWS",
+      "status": "Running",
+      "health": 97,
+      "availability": 99.7,
+      "hours": 2640,
+      "nextService": "2026-08-10"
+    },
+    {
+      "id": "COLD-RACK-01",
+      "name": "Cold Room Shuttle",
+      "type": "Shuttle",
+      "status": "Running",
+      "health": 90,
+      "availability": 98.9,
+      "hours": 3101,
+      "nextService": "2026-07-29"
+    }
+  ],
+  "locations": [
+    {
+      "id": "ACCEPT-01",
+      "zone": "Acceptance",
+      "type": "Lane",
+      "occupied": false
+    },
+    {
+      "id": "ACCEPT-02",
+      "zone": "Acceptance",
+      "type": "Lane",
+      "occupied": true
+    },
+    {
+      "id": "ASRS-A-014",
+      "zone": "ASRS",
+      "type": "BINA Slot",
+      "occupied": true
+    },
+    {
+      "id": "ASRS-B-032",
+      "zone": "ASRS",
+      "type": "IHCA Slot",
+      "occupied": true
+    },
+    {
+      "id": "BUP-03",
+      "zone": "Build-up",
+      "type": "Workstation",
+      "occupied": true
+    },
+    {
+      "id": "RAMP-02",
+      "zone": "Ramp",
+      "type": "Conveyor",
+      "occupied": true
+    },
+    {
+      "id": "COLD-01",
+      "zone": "Cold Room",
+      "type": "TTS Rack",
+      "occupied": true
+    },
+    {
+      "id": "BOND-04",
+      "zone": "Bonded",
+      "type": "Hold Rack",
+      "occupied": true
+    },
+    {
+      "id": "RELEASE-02",
+      "zone": "Release",
+      "type": "Handover Lane",
+      "occupied": false
+    }
+  ],
+  "events": [
+    {
+      "time": "08:58:42",
+      "type": "success",
+      "title": "FOW milestone confirmed",
+      "detail": "PMC-92216 arrived RAMP-02 · MH0366"
+    },
+    {
+      "time": "08:57:15",
+      "type": "info",
+      "title": "ULD final weight posted",
+      "detail": "AKE-58321 · 2,944 kg · UWS-01"
+    },
+    {
+      "time": "08:54:08",
+      "type": "warn",
+      "title": "Customs release pending",
+      "detail": "AWB 232-88419220 · 38 min on hold"
+    },
+    {
+      "time": "08:51:31",
+      "type": "success",
+      "title": "TTS routing completed",
+      "detail": "AKE-44109 moved to COLD-01"
+    },
+    {
+      "time": "08:48:19",
+      "type": "info",
+      "title": "Empty BINA request accepted",
+      "detail": "2 × BINA · Output lane ACCEPT-01"
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/movements",
+      "purpose": "Create transport command",
+      "sla": "< 400 ms"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/status-events",
+      "purpose": "Publish actual movement status",
+      "sla": "< 300 ms"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/weights",
+      "purpose": "Transmit UWS final weight",
+      "sla": "< 300 ms"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/storage-media/{id}",
+      "purpose": "Retrieve media state and location",
+      "sla": "< 250 ms"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/milestones",
+      "purpose": "Trigger FIW / FOW / FOH",
+      "sla": "< 300 ms"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/exceptions",
+      "purpose": "Notify movement deviation",
+      "sla": "< 300 ms"
+    }
+  ],
+  "reportTypes": [
+    {
+      "id": "performance",
+      "name": "System Performance Report",
+      "icon": "▥",
+      "desc": "Throughput, cycle time, SLA and exception closure."
+    },
+    {
+      "id": "availability",
+      "name": "Machine Availability Report",
+      "icon": "◉",
+      "desc": "Uptime, planned time, downtime and availability."
+    },
+    {
+      "id": "faults",
+      "name": "Machine Fault Analysis Report",
+      "icon": "⚠",
+      "desc": "Fault frequency, duration, root cause and recurrence."
+    },
+    {
+      "id": "health",
+      "name": "Machine Health Report",
+      "icon": "♥",
+      "desc": "Condition scores, inspections and trend indicators."
+    },
+    {
+      "id": "inventory",
+      "name": "Inventory Report",
+      "icon": "▦",
+      "desc": "AWB, media, location, aging and occupancy."
+    },
+    {
+      "id": "utilization",
+      "name": "System & Machine Utilization",
+      "icon": "⌁",
+      "desc": "Task load, machine use and idle capacity."
+    },
+    {
+      "id": "optimization",
+      "name": "Optimization Report",
+      "icon": "✦",
+      "desc": "Potential travel, labor and throughput improvements."
+    }
+  ]
+}

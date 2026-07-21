@@ -1,0 +1,518 @@
+[
+  {
+    "id": "S1",
+    "number": 1,
+    "name": "Cargo Outbound Process",
+    "short": "Outbound",
+    "icon": "↗",
+    "purpose": "Purpose: Bidders to demonstrate the cargo outbound processes as per documentation provided from acceptance to ramp outbound to ensure the capability of the system is aligned with the operational requirement of MABKargo. ",
+    "situation": "The system should be able to process the commands required for each operational processes and integrate with existing Logistics Management System (LMS) as the primary interface. ",
+    "demonstration": "Key capabilities to be demonstrated include:\n1. Acceptance Process\n2. Build Up Process\n3. Storage Process for Outbound\n4. Ramp Outbound Process\n5. Irregularity Handling",
+    "output": "1. Integrated system between Warehouse Management System (WMS) & Logistics Management System (LMS) for Outbound Cargo Process. \n2. Full demonstration of cargo outbound processes aligned with general air cargo process OR MABKargo's current processes.",
+    "evaluation": "Alignment, Process, Understanding of Air Cargo Process",
+    "color": "cyan",
+    "estimatedMinutes": 12,
+    "steps": [
+      {
+        "id": "S1-01",
+        "title": "Create outbound shipment",
+        "sub": "LMS shipment / AWB master",
+        "system": "LMS",
+        "action": "Create booking and AWB context",
+        "event": "BOOKING_READY",
+        "location": "LMS",
+        "requirements": [
+          "F1"
+        ]
+      },
+      {
+        "id": "S1-02",
+        "title": "Request empty BINA / BOXA",
+        "sub": "Officer command via LMS",
+        "system": "LMS",
+        "action": "Send retrieval command with media type, quantity, output lane and final location",
+        "event": "CMD_EMPTY_MEDIA",
+        "location": "Acceptance",
+        "requirements": [
+          "F1.1"
+        ]
+      },
+      {
+        "id": "S1-03",
+        "title": "Retrieve empty media",
+        "sub": "WMS validates · WCS executes",
+        "system": "WMS",
+        "action": "Validate destination and create ASRS transport task",
+        "event": "MEDIA_INMOVE",
+        "location": "ASRS",
+        "requirements": [
+          "F1.1",
+          "F1.3"
+        ]
+      },
+      {
+        "id": "S1-04",
+        "title": "Acceptance & loose cargo storage",
+        "sub": "AWB linked to BINA / BOXA",
+        "system": "WMS",
+        "action": "Receive, weigh, assign media and put-away accepted loose cargo",
+        "event": "FOH",
+        "location": "Acceptance",
+        "requirements": [
+          "F1.2",
+          "F1.5"
+        ]
+      },
+      {
+        "id": "S1-05",
+        "title": "Store intact ULD",
+        "sub": "ULD / IHCA, UWS weight and location",
+        "system": "WMS",
+        "action": "Receive intact ULD and update exact final location to LMS",
+        "event": "ULD_STORED",
+        "location": "ASRS",
+        "requirements": [
+          "F1.6",
+          "F3"
+        ]
+      },
+      {
+        "id": "S1-06",
+        "title": "Build-up retrieval",
+        "sub": "Load plan to workstation",
+        "system": "LMS",
+        "action": "Retrieve BINA, BOXA, ULD or IHCA to build-up workstation",
+        "event": "BUP_RETRIEVAL",
+        "location": "Build-up",
+        "requirements": [
+          "F2.1",
+          "F2.2"
+        ]
+      },
+      {
+        "id": "S1-07",
+        "title": "ULD build and final weighing",
+        "sub": "TTV / UWS confirmation",
+        "system": "WMS",
+        "action": "Complete build-up, transfer to TTV and post final UWS weight",
+        "event": "UWS_FINAL",
+        "location": "Build-up",
+        "requirements": [
+          "F2.4",
+          "F2.5",
+          "F2.6",
+          "F2.7",
+          "F2.8"
+        ]
+      },
+      {
+        "id": "S1-08",
+        "title": "Ramp outbound retrieval",
+        "sub": "Flight-ready ULD movement",
+        "system": "LMS",
+        "action": "Retrieve ULD to ramp conveyor and display ULD + flight number",
+        "event": "FOW",
+        "location": "Ramp",
+        "requirements": [
+          "F4"
+        ]
+      },
+      {
+        "id": "S1-09",
+        "title": "Close outbound movement",
+        "sub": "Status and audit confirmed",
+        "system": "WMS",
+        "action": "Return final location, status, weight and complete event chain",
+        "event": "OUTBOUND_COMPLETE",
+        "location": "Ramp",
+        "requirements": [
+          "F1.4",
+          "F2.3"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "S2",
+    "number": 2,
+    "name": "Cargo Inbound Process",
+    "short": "Inbound",
+    "icon": "↙",
+    "purpose": "Purpose: Bidders to demonstrate the cargo inbound proccess as per documentation provided from ramp inbound to import release to ensure the capability of the system is aligned with the operational requirement of MABKargo. ",
+    "situation": "The system should be able to process the commands required for each operational processes and integrate with existing Logistics Management System (LMS) as the primary interface. ",
+    "demonstration": "Key capabilities to be demonstrated include:\n1. Ramp Inbound Process\n2. Import Breakdown Process \n3. Storage Process for Inbound\n4. Import Release Process",
+    "output": "1. Integrated system between Warehouse Management System (WMS) & Logistics Management System (LMS) for Outbound Cargo Process. \n2. Full demonstration of cargo outbound processes aligned with general air cargo process OR MABKargo's current processes.",
+    "evaluation": "Alignment, Process, Understanding of Air Cargo Process",
+    "color": "blue",
+    "estimatedMinutes": 10,
+    "steps": [
+      {
+        "id": "S2-01",
+        "title": "Inbound flight arrival",
+        "sub": "Manifest and ULD context",
+        "system": "LMS",
+        "action": "Load arrival manifest and issue ramp check-in command",
+        "event": "RCF",
+        "location": "Ramp",
+        "requirements": [
+          "F5"
+        ]
+      },
+      {
+        "id": "S2-02",
+        "title": "Ramp ULD check-in",
+        "sub": "ULD / IHCA on conveyor",
+        "system": "WMS",
+        "action": "Confirm ramp check-in and send FIW milestone",
+        "event": "FIW",
+        "location": "Ramp",
+        "requirements": [
+          "F5.1",
+          "F5.2"
+        ]
+      },
+      {
+        "id": "S2-03",
+        "title": "Apply PRP / TTS routing",
+        "sub": "Rule-driven storage route",
+        "system": "WMS",
+        "action": "Hold PRP in auto storage or send TTS ULD directly to cold room",
+        "event": "RULE_ROUTE",
+        "location": "Cold Room",
+        "requirements": [
+          "F5.3",
+          "F5.4"
+        ]
+      },
+      {
+        "id": "S2-04",
+        "title": "Retrieve ULD to breakdown",
+        "sub": "UCS to workstation",
+        "system": "LMS",
+        "action": "Issue ULD retrieval and empty BINA / BOXA supply commands",
+        "event": "BREAKDOWN_READY",
+        "location": "Breakdown",
+        "requirements": [
+          "F6.1",
+          "F6.2",
+          "F6.4"
+        ]
+      },
+      {
+        "id": "S2-05",
+        "title": "Breakdown and scan pieces",
+        "sub": "Loose shipment check-in",
+        "system": "WMS",
+        "action": "Deconsolidate, scan cargo, link AWBs and send FIW",
+        "event": "BREAKDOWN_ACTIVE",
+        "location": "Breakdown",
+        "requirements": [
+          "F6.5"
+        ]
+      },
+      {
+        "id": "S2-06",
+        "title": "Store full / partial media",
+        "sub": "BCS / CSS paths",
+        "system": "WMS",
+        "action": "Send full BINA / BOXA to BCS and partial ULD to CSS with exact location updates",
+        "event": "INBOUND_STORED",
+        "location": "ASRS",
+        "requirements": [
+          "F6.6",
+          "F6.7",
+          "F6.8",
+          "F6.9",
+          "F6.10",
+          "F6.11"
+        ]
+      },
+      {
+        "id": "S2-07",
+        "title": "Import release authorization",
+        "sub": "LMS release command",
+        "system": "LMS",
+        "action": "Authorize cargo retrieval and move media to release point",
+        "event": "RELEASE_AUTH",
+        "location": "Release",
+        "requirements": [
+          "F7.1",
+          "F7.2"
+        ]
+      },
+      {
+        "id": "S2-08",
+        "title": "Handover and purge",
+        "sub": "Cargo released · media empty",
+        "system": "WMS",
+        "action": "Complete handover, clear shipment data and receive empty media status",
+        "event": "DLV",
+        "location": "Release",
+        "requirements": [
+          "F7.1",
+          "F7.3"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "S3",
+    "number": 3,
+    "name": "Reporting Preparation",
+    "short": "Reporting",
+    "icon": "▥",
+    "purpose": "Purpose: Bidders to produce the reports required in the documentation given to ensure the system has the capabilities to provide transparency to MABKargo for its machine availability and performance. ",
+    "situation": "The system must provide comprehensive reporting capabilities that enable operational transparency, support proactive maintenance planning, optimize resource utilization, and facilitate management decision-making through reliable and exportable reports.",
+    "demonstration": "The bidder shall demonstrate the system's capability to generate, configure, filter, schedule and export the following reports:\n1. System Performance Report\n2. Machine Availability Report\n3. Machine Fault Analysis Report\n4. Machine Health Report\n5. Inventory Report\n6. System and Machine Utilization Report\n7. Optimization Report\nReport parameter selection, filtering by date/equipment/location, drill-down capability, dashboard visualization (if available), scheduled report generation, and export to common formats (PDF/Excel/CSV) should be demonstrated. \n",
+    "output": "1. Reports are generated accurately using historical data if available, or using data the captures the operational efficiency of Cargo Terminal Operators. \n2. Users are allowed to schedule or automate recurring reports generation for MABKargo's utilization. ",
+    "evaluation": "Accuracy, Simplicity, Capability",
+    "color": "purple",
+    "estimatedMinutes": 7,
+    "steps": [
+      {
+        "id": "S3-01",
+        "title": "Select report family",
+        "sub": "Seven Atlas report types",
+        "system": "WMS",
+        "action": "Choose report and date / equipment / location parameters",
+        "event": "REPORT_SELECT",
+        "location": "Reporting",
+        "requirements": [
+          "R1"
+        ]
+      },
+      {
+        "id": "S3-02",
+        "title": "Filter and drill down",
+        "sub": "Operational transparency",
+        "system": "WMS",
+        "action": "Apply filters and inspect supporting machine or inventory transactions",
+        "event": "REPORT_FILTER",
+        "location": "Reporting",
+        "requirements": [
+          "R1"
+        ]
+      },
+      {
+        "id": "S3-03",
+        "title": "Visualize trends",
+        "sub": "Dashboard evidence",
+        "system": "WMS",
+        "action": "Render KPI, trend and exception visualizations from dynamic data",
+        "event": "REPORT_RENDER",
+        "location": "Reporting",
+        "requirements": [
+          "R1"
+        ]
+      },
+      {
+        "id": "S3-04",
+        "title": "Schedule recurring output",
+        "sub": "Daily / weekly / monthly",
+        "system": "WMS",
+        "action": "Create automated report schedule and recipient list",
+        "event": "REPORT_SCHEDULED",
+        "location": "Reporting",
+        "requirements": [
+          "R1"
+        ]
+      },
+      {
+        "id": "S3-05",
+        "title": "Export evidence",
+        "sub": "CSV / Excel / print-to-PDF",
+        "system": "WMS",
+        "action": "Download report data and preserve filter / generated-at metadata",
+        "event": "REPORT_EXPORTED",
+        "location": "Reporting",
+        "requirements": [
+          "R1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "S4",
+    "number": 4,
+    "name": "Maintenance Readiness",
+    "short": "Maintenance",
+    "icon": "⚙",
+    "purpose": "Purpose: Bidders to provide the system that related on maintenance which include the graphical user on the maintenance strategy, planning and decision as well. ",
+    "situation": "The system must be able to provide the maintenance strategy and planning. The strategy include to optimize the resources and make sure the availability of the machine is sustain to avoid jeopardize to the operations.",
+    "demonstration": "The bidder shall demonstrate the system's capability to plan and strategize the maintenance to optimize the resources align with the machine availability. It is include the following capability:\n1. Strategy on Maintenance Optimization\n2. Maintenance Planning Upon Breakdown\n3. Equipment Availability Calculation on Service Level Availability\n",
+    "output": "1. System able to planning the maintenance accordingly without jeopardize the operations\n2. The system interface have a friendly graphical",
+    "evaluation": "Optimization, Performance and Equipment Planning.",
+    "color": "orange",
+    "estimatedMinutes": 8,
+    "steps": [
+      {
+        "id": "S4-01",
+        "title": "Inspect machine health",
+        "sub": "Condition and performance checks",
+        "system": "EMMS",
+        "action": "Review health scores, counters, inspections and trend signals",
+        "event": "HEALTH_REVIEW",
+        "location": "Maintenance",
+        "requirements": [
+          "M2"
+        ]
+      },
+      {
+        "id": "S4-02",
+        "title": "Inject breakdown",
+        "sub": "Controlled demonstration fault",
+        "system": "WCS",
+        "action": "Record fault, affected cargo task, downtime start and severity",
+        "event": "FAULT_RAISED",
+        "location": "ASRS",
+        "requirements": [
+          "M2",
+          "M4"
+        ]
+      },
+      {
+        "id": "S4-03",
+        "title": "Plan maintenance response",
+        "sub": "Resources and operational impact",
+        "system": "EMMS",
+        "action": "Select technician, spare, service window and alternate routing",
+        "event": "WO_PLANNED",
+        "location": "Maintenance",
+        "requirements": [
+          "M2",
+          "M4"
+        ]
+      },
+      {
+        "id": "S4-04",
+        "title": "Recover equipment",
+        "sub": "Repair and functional test",
+        "system": "EMMS",
+        "action": "Complete repair, safety checks and return machine to service",
+        "event": "MACHINE_RECOVERED",
+        "location": "ASRS",
+        "requirements": [
+          "M2"
+        ]
+      },
+      {
+        "id": "S4-05",
+        "title": "Calculate availability",
+        "sub": "Target ≥ 98%",
+        "system": "WMS",
+        "action": "Calculate uptime / planned time and show downtime evidence",
+        "event": "AVAILABILITY_CALC",
+        "location": "Maintenance",
+        "requirements": [
+          "M3"
+        ]
+      },
+      {
+        "id": "S4-06",
+        "title": "Publish management pack",
+        "sub": "SLA and maintenance reporting",
+        "system": "EMMS",
+        "action": "Generate daily, weekly and monthly performance / fault reports",
+        "event": "MAINT_REPORT",
+        "location": "Reporting",
+        "requirements": [
+          "M4"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "S5",
+    "number": 5,
+    "name": "System Integration Planning",
+    "short": "Integration",
+    "icon": "⇄",
+    "purpose": "Purpose: Bidders to present the system integration planning to ensure that seamless integration is proposed for enhanced operational efficiency  within MABKargo's warehouse. ",
+    "situation": "The system must have the capabilities to process the commands directed from the Logistics Management System (LMS) to ensure that the cargo handling processes are per the functional requirement. The system must also be able to integrate with current LMS and act as an executor for the commands and record the movements of the cargo vice versa.",
+    "demonstration": "Key capabiltiies include: \n1. Full integration with Logistics Management System (LMS). \n2. System must be able to integrate with the MH Internal Systems Scope.\n3. Integration planning proposed must be viable for operations on day to day basis. ",
+    "output": "1. A fully integrated system with current Logistics Management System (LMS)  acting as the interface and the Warehouse Management System (WMS) acting as the executor. ",
+    "evaluation": "Capability, Planning, Potential. ",
+    "color": "green",
+    "estimatedMinutes": 8,
+    "steps": [
+      {
+        "id": "S5-01",
+        "title": "Show target architecture",
+        "sub": "LMS · WMS · WCS · MH systems",
+        "system": "Integration",
+        "action": "Explain interface ownership and command / status boundaries",
+        "event": "ARCH_VIEW",
+        "location": "Integration",
+        "requirements": [
+          "I2",
+          "I4"
+        ]
+      },
+      {
+        "id": "S5-02",
+        "title": "Send LMS command",
+        "sub": "Primary interface initiates move",
+        "system": "LMS",
+        "action": "Create idempotent command with AWB, media, source, target and priority",
+        "event": "API_COMMAND",
+        "location": "Integration",
+        "requirements": [
+          "I2",
+          "I3"
+        ]
+      },
+      {
+        "id": "S5-03",
+        "title": "Validate and execute",
+        "sub": "WMS executor model",
+        "system": "WMS",
+        "action": "Validate payload, location and equipment before task creation",
+        "event": "API_ACCEPTED",
+        "location": "Integration",
+        "requirements": [
+          "I2",
+          "I3"
+        ]
+      },
+      {
+        "id": "S5-04",
+        "title": "Return actual status",
+        "sub": "Movement, weight and final location",
+        "system": "WMS",
+        "action": "Publish acknowledged, in-move, arrived and milestone events to LMS",
+        "event": "API_STATUS",
+        "location": "Integration",
+        "requirements": [
+          "I2",
+          "I3"
+        ]
+      },
+      {
+        "id": "S5-05",
+        "title": "Demonstrate failure recovery",
+        "sub": "Retry · queue · replay",
+        "system": "Integration",
+        "action": "Simulate interface error and recover through monitored retry / replay",
+        "event": "API_REPLAY",
+        "location": "Integration",
+        "requirements": [
+          "I2",
+          "I3"
+        ]
+      },
+      {
+        "id": "S5-06",
+        "title": "Confirm implementation plan",
+        "sub": "Timeline and day-to-day viability",
+        "system": "PMO",
+        "action": "Show delivery phases, ownership, testing and cutover approach",
+        "event": "PLAN_CONFIRMED",
+        "location": "PMO",
+        "requirements": [
+          "I1",
+          "I4"
+        ]
+      }
+    ]
+  }
+]

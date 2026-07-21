@@ -1,0 +1,418 @@
+{
+  "Cargo_Fucn_Req": [
+    [
+      null,
+      "Cargo Processes (Outbound)",
+      null,
+      null
+    ],
+    [
+      null,
+      "Scenario 1 : Cargo Outbound Process",
+      null,
+      null
+    ],
+    [
+      null,
+      "Purpose: Bidders to demonstrate the cargo outbound processes as per documentation provided from acceptance to ramp outbound to ensure the capability of the system is aligned with the operational requirement of MABKargo. ",
+      null,
+      null
+    ],
+    [
+      null,
+      "Opreations Situation",
+      null,
+      null
+    ],
+    [
+      null,
+      "The system should be able to process the commands required for each operational processes and integrate with existing Logistics Management System (LMS) as the primary interface. ",
+      null,
+      null
+    ],
+    [
+      null,
+      "Demonstration Point",
+      "Key capabilities to be demonstrated include:\n1. Acceptance Process\n2. Build Up Process\n3. Storage Process for Outbound\n4. Ramp Outbound Process\n5. Irregularity Handling",
+      null
+    ],
+    [
+      null,
+      "Key Output Expected ",
+      "1. Integrated system between Warehouse Management System (WMS) & Logistics Management System (LMS) for Outbound Cargo Process. \n2. Full demonstration of cargo outbound processes aligned with general air cargo process OR MABKargo's current processes.",
+      null
+    ],
+    [
+      null,
+      "Evaluation Focus",
+      "Alignment, Process, Understanding of Air Cargo Process",
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      "Cargo Processes (Inbound)",
+      null,
+      null
+    ],
+    [
+      null,
+      "Scenario 2 : Cargo Inbound Process",
+      null,
+      null
+    ],
+    [
+      null,
+      "Purpose: Bidders to demonstrate the cargo inbound proccess as per documentation provided from ramp inbound to import release to ensure the capability of the system is aligned with the operational requirement of MABKargo. ",
+      null,
+      null
+    ],
+    [
+      null,
+      "Opreations Situation",
+      null,
+      null
+    ],
+    [
+      null,
+      "The system should be able to process the commands required for each operational processes and integrate with existing Logistics Management System (LMS) as the primary interface. ",
+      null,
+      null
+    ],
+    [
+      null,
+      "Demonstration Point",
+      "Key capabilities to be demonstrated include:\n1. Ramp Inbound Process\n2. Import Breakdown Process \n3. Storage Process for Inbound\n4. Import Release Process",
+      null
+    ],
+    [
+      null,
+      "Key Output Expected ",
+      "1. Integrated system between Warehouse Management System (WMS) & Logistics Management System (LMS) for Outbound Cargo Process. \n2. Full demonstration of cargo outbound processes aligned with general air cargo process OR MABKargo's current processes.",
+      null
+    ],
+    [
+      null,
+      "Evaluation Focus",
+      "Alignment, Process, Understanding of Air Cargo Process",
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "No",
+      "Functions",
+      "Description",
+      "Remark (s)"
+    ],
+    [
+      1,
+      "Acceptance",
+      "1. Retrieval of EMPTY BINA/BOXA\na)The proposed system must be able to receive and process command from LMS for retrieval of EMPTY BINA or BOXA as per requested by officer in charge.\nAccept or process the following data in the message:\n- BINA or BOXA type\n- Number of cages requested\n- Target output lane (output lane area)\n- Final to Location \nb)Retrieve and place the requested number of cages in the provided target area, update and displayed the Final \"\"To Location\"\" in Out Lane Screen.\n2.Storage of Accepted Loose Cargo\nThe proposed system must be able to receive and process Storage Media (BINA & BOXA), AWB and update storage location to LMS.\n3. The system must be able to trigger transport command to inform LMS the Storage Media (BINA & BOXA ) is \"inmove\" status.\nSystem should be able to inform/update user regarding the status of the Storage Media (BINA & BOXA ) either \"full\" or \"empty\".\n4. The system must be able to notify LMS on the deviation of regular movement (destination occupied, location not available, machine fault during transfer).\n5. System must be able to trigger command to LMS that the Storage Media (BINA & BOXA) has arrived at the transport destination and update final location to LMS.\n6. Storage of Acceptance /Trucking (ULD)\nThe proposed system must be able to receive and process intact ULD, ULD Number, ULD Weight (for UWS), AWB and update the location to LMS\n6. The system must be able to trigger transport command to inform LMS the Storage Media (ULD, IHCA)is \"inmove\" status\n7. System should be able to inform/update user regarding the status of the Storage Media (ULD, IHCA ) either \"full\" or \"empty\"\n8. The system must be able to notify LMS on the deviation of regular movement (destination occupied, location not available, machine fault during transfer)\n9. System must be able to trigger command to LMS that the Storage Media (ULD, IHCA) has arrived at the transport destination and update the final location to LMS",
+      null
+    ],
+    [
+      2,
+      "Cargo Build Up",
+      "1. System must be able to process command from LMS to initiate retrieval process of  Storage Media (BINA,BOXA, ULD, IHCA) from auto storage location.\n2. System must be able to to transfer the Storage Media (BINA,BOXA, ULD, IHCA) to the desired location based on transport command from LMS.\n3. The system must be able to notify LMS on the deviation of regular movement (destination occupied, location not available, machine fault during transfer)\n4. System must be able to trigger command to LMS that the ULD has arrived at the desired location.\n5. The proposed system must be able to transmit final location of ULD Cargo to LMS\n6. The system must be able to transmit weight information of ULD Cargo to LMS\n7. Once BUP completed, the system must be able to receive and process transport command from LMS to transfer the storage media from workstation to TTV for final weight and storage location. \n8. The system must be able to trigger the final weight (UWS) to LMS for UWS purpose.",
+      null
+    ],
+    [
+      3,
+      "ULD Storage",
+      "1. The system must be able to inform LMS the ULD movement status.\n2. System must be able to trigger info to LMS that the ULD has arrived at the desired transport destination.\n3. The proposed system must be able to transmit final location of ULD to LMS",
+      null
+    ],
+    [
+      4,
+      "Outbound Ramp ULD Retrieval",
+      "1. System must be able to receive and process transport command from LMS for retrieval of storage media at ramp desired location.\n2. System must be able to send command to LMS to trigger FOW upon arrival of ULD at desired ramp conveyor.\n3. ULD and Flight number must be displayed on each of the Ramp Conveyor LED Display.",
+      null
+    ],
+    [
+      5,
+      "Inbound Ramp Check In",
+      "1. System must be able to receive and process command from LMS for check-in of Storage Media (ULD, IHCA) onto the ramp conveyor.\n2. System must be able to send command to LMS to trigger FIW upon check-in of Storage Media at ramp conveyor.\n3. System must be able to receive and process command from LMS for prepacked/intact ULD.\n(Those ULD flagged as PRP to be kept in auto storage location until manually retrieved by planner)\n4. System must be able to process transport command from LMS for ULD that contains TTS ( Time and Temperature Sensitive Shipment) to transfer directly to auto cold room storage.",
+      null
+    ],
+    [
+      6,
+      "Import Breakdown",
+      "1. Retrieve ULD from UCS : The proposed system must be able to receive command from LMS to transfer ULD from Storage location to breakdown workstation.\n2. Request of empty BINA & BOXA : System must be able to transfer the empty Storage Media (BINA & BOXA) to the desired location based on transport command from LMS.\"\n3. The system must be able to notify to LMS on the deviation of regular movement (destination occupied, location not available, machine fault during transfer)\n4. The propose system must be able to process command from LMS to retrieve ULD/Storage Media from ULD storage location to workstation to initiate breakdown process.\n5. System must be able to send command to LMS to trigger FIW upon check-in of Loose Shipment in the Warehouse\n6. Send Full Storage Media to BCS : LocationThe propose system must be able to send Full storage media (BINA/BOXA) to BCS auto location.\"\n7. System should be able to inform/update user regarding the status of the Storage Media (BINA & BOXA ) either \"full\" or \"empty\".\n8. The propose system must be able to update LMS on the exact location of BINA/BOXA\n9. Send Partially Breakdown Storage Media to CSS Location : The propose system must be able to send Partially Breakdown ULD to CSS auto location.\n10. System should be able to inform/update user regarding the status of the Storage Media ULD either \"full\" or \"empty\".\n11. The propose system must be able to update LMS on the exact location of ULD",
+      null
+    ],
+    [
+      7,
+      "Import Release ",
+      "1. System must be able to transfer the Storage Media (BINA,BOXA and ULD )to the desired location based on transport command from LMS and clear data once shipment is released. \n2. System must be able to perform Cargo Retrieval from Location based on LMS request.\n3. System must be able to receive storage media status (empty) from LMS after cargo is purged.",
+      null
+    ]
+  ],
+  "Reporting_Req": [
+    [
+      null,
+      "Reporting Capabilities",
+      null,
+      null
+    ],
+    [
+      null,
+      "Scenario 3: Reporting Preparation",
+      null,
+      null
+    ],
+    [
+      null,
+      "Purpose: Bidders to produce the reports required in the documentation given to ensure the system has the capabilities to provide transparency to MABKargo for its machine availability and performance. ",
+      null,
+      null
+    ],
+    [
+      null,
+      "Operations Situation",
+      null,
+      null
+    ],
+    [
+      null,
+      "The system must provide comprehensive reporting capabilities that enable operational transparency, support proactive maintenance planning, optimize resource utilization, and facilitate management decision-making through reliable and exportable reports.",
+      null,
+      null
+    ],
+    [
+      null,
+      "Demonstration Point",
+      "The bidder shall demonstrate the system's capability to generate, configure, filter, schedule and export the following reports:\n1. System Performance Report\n2. Machine Availability Report\n3. Machine Fault Analysis Report\n4. Machine Health Report\n5. Inventory Report\n6. System and Machine Utilization Report\n7. Optimization Report\nReport parameter selection, filtering by date/equipment/location, drill-down capability, dashboard visualization (if available), scheduled report generation, and export to common formats (PDF/Excel/CSV) should be demonstrated. \n",
+      null
+    ],
+    [
+      null,
+      "Key Output Expected ",
+      "1. Reports are generated accurately using historical data if available, or using data the captures the operational efficiency of Cargo Terminal Operators. \n2. Users are allowed to schedule or automate recurring reports generation for MABKargo's utilization. ",
+      null
+    ],
+    [
+      null,
+      "Evaluation Focus",
+      "Accuracy, Simplicity, Capability",
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "No",
+      "Functions",
+      "Description",
+      "Remark (s)"
+    ],
+    [
+      1,
+      "System  Reporting",
+      "Bidders to demonstrate the capability of sytem to produce the reports as per below: \n1. System Performance Report\n2. Machine Availability Report\n3. Machine Fault Analysis Report\n4. Machine Health Report\n5. Inventory Report\n6. System and Machine Utilization Report\n7. Optimization Report",
+      null
+    ]
+  ],
+  "Maint_Req": [
+    [
+      null,
+      "Maintenance Readiness",
+      null,
+      null
+    ],
+    [
+      null,
+      "Scenario 4 : Maintenance ",
+      null,
+      null
+    ],
+    [
+      null,
+      "Purpose: Bidders to provide the system that related on maintenance which include the graphical user on the maintenance strategy, planning and decision as well. ",
+      null,
+      null
+    ],
+    [
+      null,
+      "Business Situation",
+      null,
+      null
+    ],
+    [
+      null,
+      "The system must be able to provide the maintenance strategy and planning. The strategy include to optimize the resources and make sure the availability of the machine is sustain to avoid jeopardize to the operations.",
+      null,
+      null
+    ],
+    [
+      null,
+      "Demonstration Point",
+      "The bidder shall demonstrate the system's capability to plan and strategize the maintenance to optimize the resources align with the machine availability. It is include the following capability:\n1. Strategy on Maintenance Optimization\n2. Maintenance Planning Upon Breakdown\n3. Equipment Availability Calculation on Service Level Availability\n",
+      null
+    ],
+    [
+      null,
+      "Key Output Expected ",
+      "1. System able to planning the maintenance accordingly without jeopardize the operations\n2. The system interface have a friendly graphical",
+      null
+    ],
+    [
+      null,
+      "Evaluation Focus",
+      "Optimization, Performance and Equipment Planning.",
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "No",
+      "Functions",
+      "Description",
+      "Remark (s)"
+    ],
+    [
+      1,
+      "General Requirement",
+      "1. System propose by Bidders to be user friendly and interactive graphical user interface for warehouse operation's utilization. \n2. Solution must be designed with sufficient flexibility to remain adaptable for the next 10 years. \n3. Solution must be future proof min next 10 years\n4. Solution to have Induction of advanced automation & robotics technology where applicable to improve cargo handling process with higher efficiency, cycle time and productivity",
+      null
+    ],
+    [
+      2,
+      "Maintenance Strategy ",
+      "Bidders to demonstrate a maintenance system that is capable for: \n• Equipment performance checks and inspections\n• Condition monitoring and trend analysis\n• Adjustments, lubrication, and cleaning\n• Routine replacement of wear‑and‑tear components\n• Testing of safety devices and statutory compliance\n• Predictive maintenance techniques\n• Maintenance of technical documentation and library\n• Supply of consumables (lubricants, cleaning materials, etc.)\nBidders to propose any additional maintenance scope of work which is relevant.",
+      null
+    ],
+    [
+      3,
+      "System Availability ",
+      "Bidders to demonstrate on how the system availability to be calculated through the formula, the monitoring tools used, the measurement period, and how downtime is recorded and reported. Targeted output for System Avaialbiltiy for Cargo Application must be at 98% during demonstration. ",
+      null
+    ],
+    [
+      4,
+      "Management Reporting",
+      "Bidders to demonstrate system that would be able to showcase the management reporting as per below: \n• Work planning and coordination\n• Spare parts and consumables management\n• Electronic Maintenance Management System (EMMS) operation and reporting\n• Health, Safety, and statutory compliance\n• Technical documentation management\n• Monthly performance reporting\n• Attendance at Client management meetings\n• Periodic management and SLA reviews\n• Daily Maintenance Summary Report\n• Weekly Maintenance Inspection Walkabout Report\n• Fault Reports (as required)\n• Monthly Equipment Performance and Availability Report\n• Monthly Fault Analysis Report\n• Predictive Maintenance Reports (e.g. thermography)",
+      null
+    ]
+  ],
+  "IT&Project_DLV": [
+    [
+      null,
+      "System Integration",
+      null,
+      null
+    ],
+    [
+      null,
+      "Scenario 5 : System Integration Planning",
+      null,
+      null
+    ],
+    [
+      null,
+      "Purpose: Bidders to present the system integration planning to ensure that seamless integration is proposed for enhanced operational efficiency  within MABKargo's warehouse. ",
+      null,
+      null
+    ],
+    [
+      null,
+      "Business Situation",
+      null,
+      null
+    ],
+    [
+      null,
+      "The system must have the capabilities to process the commands directed from the Logistics Management System (LMS) to ensure that the cargo handling processes are per the functional requirement. The system must also be able to integrate with current LMS and act as an executor for the commands and record the movements of the cargo vice versa.",
+      null,
+      null
+    ],
+    [
+      null,
+      "Demonstration Point",
+      "Key capabiltiies include: \n1. Full integration with Logistics Management System (LMS). \n2. System must be able to integrate with the MH Internal Systems Scope.\n3. Integration planning proposed must be viable for operations on day to day basis. ",
+      null
+    ],
+    [
+      null,
+      "Key Output Expected ",
+      "1. A fully integrated system with current Logistics Management System (LMS)  acting as the interface and the Warehouse Management System (WMS) acting as the executor. ",
+      null
+    ],
+    [
+      null,
+      "Evaluation Focus",
+      "Capability, Planning, Potential. ",
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "No",
+      "Functions",
+      "Description",
+      "Remark (s)"
+    ],
+    [
+      1,
+      "Timeline & Approach",
+      "Bidder to present project implementation plan and approach, timeline and etc ",
+      null
+    ],
+    [
+      2,
+      "Integration Planning",
+      "Bidder to present proposed integration approach ",
+      null
+    ],
+    [
+      3,
+      "Software Capabilities",
+      "Bidder to present platform integration capabilities, available APIs ",
+      null
+    ],
+    [
+      4,
+      "Internal Scope",
+      "Bidder to present proposed scope for integration with MH internal systems",
+      null
+    ]
+  ]
+}
