@@ -1,0 +1,9 @@
+{
+  "name": "AIonOS MAB Kargo Atlas Demo",
+  "short_name": "Atlas Demo",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#061f35",
+  "theme_color": "#06243d",
+  "icons": [{"src":"assets/favicon.svg","sizes":"any","type":"image/svg+xml"}]
+}

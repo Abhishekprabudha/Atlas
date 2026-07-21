@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#06243d" />
+  <meta name="description" content="AIonOS MAB Kargo Project Atlas – interactive LMS, CMS and WMS demonstration." />
+  <title>AIonOS | MAB Kargo Atlas Operations Demo</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/app.css" />
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="brand-block">
+        <div class="brand-mark">A</div>
+        <div>
+          <div class="brand-name">AIonOS</div>
+          <div class="brand-sub">MAB Kargo · Atlas</div>
+        </div>
+      </div>
+
+      <div class="environment-chip">
+        <span class="pulse-dot"></span>
+        <div><strong>DEMO ENVIRONMENT</strong><small>KLIA Cargo Terminal · Live Simulation</small></div>
+      </div>
+
+      <nav id="nav" class="nav-list"></nav>
+
+      <div class="sidebar-footer">
+        <div class="mini-health"><span>Platform health</span><strong id="sidebarHealth">98.6%</strong></div>
+        <div class="mini-health"><span>Active integrations</span><strong id="sidebarIntegrations">6 / 6</strong></div>
+        <button class="ghost-btn full" id="presenterModeBtn">◫ Presenter mode</button>
+      </div>
+    </aside>
+
+    <section class="workspace">
+      <header class="topbar">
+        <div>
+          <div class="eyebrow" id="pageEyebrow">OPERATIONS CONTROL TOWER</div>
+          <h1 id="pageTitle">Cargo Mission Control</h1>
+        </div>
+        <div class="top-actions">
+          <div class="sim-clock"><span>SIM TIME</span><strong id="simTime">09:00:00</strong></div>
+          <button class="icon-btn" id="notificationBtn" aria-label="Notifications">✦<span id="notificationCount">3</span></button>
+          <button class="primary-btn" id="launchScenarioBtn">▶ Launch scenario</button>
+        </div>
+      </header>
+
+      <main id="view" class="view" tabindex="-1"></main>
+    </section>
+  </div>
+
+  <div id="toastLayer" class="toast-layer" aria-live="polite"></div>
+  <div id="modalLayer"></div>
+
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
