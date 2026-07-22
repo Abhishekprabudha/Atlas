@@ -43,7 +43,7 @@ class AtlasApp {
       activeScenarioId:null, currentStep:-1, completedSteps:[], coverage:new Set(), selectedReport:'performance',
       requirementSearch:'', requirementCategory:'All', workbookSheet:'Cargo_Fucn_Req', dataTab:'shipments',
       selectedAwb:null, notifications:3, messageLog:[], schedules:[], incidentActive:false, workflowAll:false,
-      briefingIndex:0
+      briefingIndex:0, mapMode:'demo'
     };
   }
 
@@ -138,7 +138,7 @@ class AtlasApp {
       downloadJson:()=>this.downloadJson(), closeModal:()=>this.closeModal(), openBriefing:()=>this.openBriefing(), closeBriefing:()=>this.closeBriefing(),
       briefingNext:()=>this.briefingMove(1), briefingPrev:()=>this.briefingMove(-1), fullscreen:()=>document.documentElement.requestFullscreen?.(),
       completeTask:()=>this.completeTask(ds.id), createCommand:()=>this.createManualCommand(), showAwb:()=>this.showAwb(ds.id),
-      showUldTrace:()=>this.showUldTrace(ds.id),
+      showUldTrace:()=>this.showUldTrace(ds.id), toggleMapMode:()=>{this.state.mapMode=ds.mode==='live'?'live':'demo';this.render();},
       toggleWorkbook:()=>{this.state.workbookSheet=ds.sheet;this.render();}, printReport:()=>window.print()
     }[action]; if(fn) fn();
   }
@@ -255,7 +255,7 @@ class AtlasApp {
       </section>
       <section class="layout-main" style="margin-top:16px">
         <div class="card">
-          <div class="card-header"><div><div class="card-title">Live Cargo Terminal Digital Map</div><div class="card-sub">LMS orchestrates · WMS decides and confirms · WCS executes</div></div><div class="card-actions"><span class="badge success">● Live</span><button class="ghost-btn" data-action="reportException" data-type="destination">Report exception</button></div></div>
+          <div class="card-header"><div><div class="card-title">Live Cargo Terminal Digital Map</div><div class="card-sub">LMS orchestrates · WMS decides and confirms · WCS executes</div></div><div class="card-actions"><div class="map-mode-switch" role="group" aria-label="Digital map mode"><button class="map-mode-btn ${this.state.mapMode==='demo'?'active':''}" data-action="toggleMapMode" data-mode="demo">Demo Mode</button><button class="map-mode-btn ${this.state.mapMode==='live'?'active':''}" data-action="toggleMapMode" data-mode="live">Live Mode</button></div><span class="badge success">● Live</span><button class="ghost-btn" data-action="reportException" data-type="destination">Report exception</button></div></div>
           ${this.terminalMap()}
         </div>
         <div class="card">
@@ -289,13 +289,11 @@ class AtlasApp {
     actions[demo]?.();
   }
 
-  terminalMap(){return `<div class="terminal-map">
-    <div class="zone accept">Zone 01<strong>Acceptance</strong><small>RCS / FOH · BINA / BOXA</small></div>
-    <div class="zone asrs">Zone 02<strong>Automated Storage</strong><small>ULD · IHCA · BCS · CSS</small><div style="margin-top:18px;display:grid;gap:12px"><span><i class="machine-dot"></i> Crane 01 · Running</span><span><i class="machine-dot ${this.state.incidentActive?'down':''}"></i> Crane 02 · ${this.state.incidentActive?'Fault':'Running'}</span></div></div>
-    <div class="zone bup">Zone 03<strong>Build-up / UWS</strong><small>TTV · final weight</small></div>
-    <div class="zone ramp">Zone 04<strong>Ramp Conveyors</strong><small>FIW / FOW · flight display</small></div>
-    <div class="zone cold">Special Zone<strong>Auto Cold Room</strong><small>TTS / Pharma</small></div>
-    <div class="zone release">Zone 06<strong>Import Release</strong><small>DLV · purge · empty media</small></div>
+  terminalMap(){const live=this.state.mapMode==='live';return `<div class="terminal-map ${live?'live-map':'demo-map'}">
+    ${live?`<div class="map-toolbar"><span class="map-live-dot"></span><strong>KLIA CARGO TERMINAL · LIVE OPERATIONS</strong><span>North ↑</span></div><div class="airside"><span>APRON / AIRSIDE</span><i></i><i></i><i></i></div><div class="road road-a"></div><div class="road road-b"></div><div class="road road-c"></div><div class="map-legend"><span><i class="legend-uld"></i> Active ULD</span><span><i class="legend-route"></i> Conveyance route</span></div>`:''}
+    <div class="zone accept">${live?'<span class="zone-code">A-01</span>':''}Zone 01<strong>Acceptance</strong><small>RCS / FOH · BINA / BOXA</small></div>
+    <div class="zone asrs">${live?'<span class="zone-code">S-02</span>':''}Zone 02<strong>Automated Storage</strong><small>ULD · IHCA · BCS · CSS</small><div class="crane-status"><span><i class="machine-dot"></i> Crane 01</span><span><i class="machine-dot ${this.state.incidentActive?'down':''}"></i> Crane 02</span></div></div>
+    <div class="zone bup">${live?'<span class="zone-code">B-03</span>':''}Zone 03<strong>Build-up / UWS</strong><small>TTV · final weight</small></div><div class="zone ramp">${live?'<span class="zone-code">R-04</span>':''}Zone 04<strong>Ramp Conveyors</strong><small>FIW / FOW · flight display</small></div><div class="zone cold">${live?'<span class="zone-code">C-05</span>':''}Special Zone<strong>Auto Cold Room</strong><small>TTS / Pharma</small></div><div class="zone release">${live?'<span class="zone-code">D-06</span>':''}Zone 06<strong>Import Release</strong><small>DLV · purge · empty media</small></div>
     <i class="conveyor c1"></i><i class="conveyor c2"></i><i class="conveyor c3"></i><i class="conveyor c4"></i>
     <div class="cargo-token" id="cargoToken">ULD</div></div>`;}
 
